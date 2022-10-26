@@ -8,7 +8,7 @@
     👀 本站总访问量：<span id="busuanzi_value_site_pv">111</span> 次
 </span>
 <span id="busuanzi_container_site_uv"  >
-    | 🚴‍♂️ 本站总访客数：<span id="busuanzi_value_site_uv">111</span> 人
+    | 学习记录，便于复习！
 </span>
 
 <br>
