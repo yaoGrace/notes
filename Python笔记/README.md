@@ -2,7 +2,7 @@
 
 ## 入门课程：黑马2022年新版 Python课程
 
-[billi在线播放](https://b23.tv/4pJn7G1)
+[billi在线播放](https://www.bilibili.com/video/BV1qW4y1a7fU/)
 
 
 ## Python基础入门视频课程
