@@ -10,105 +10,7 @@
   <meta name="referrer" content="no-referrer">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
 </head>
-<style>
-  /* 自定义样式 */
-  .sidebar-nav a{ text-decoration: none!important;}
-  .sidebar-nav a:hover{background-color: rgb(155, 58, 224);color: #fff!important; }
-  .sidebar ul li.active>a {background-color: rgb(155, 58, 224);color: #fff!important;border-radius: 0px 5px 5px 0px;padding-left: 5px;}
-  .content #main h2 { background-color: #ccc;line-height: 1.12em;}
-  .content #main h2 a{ color: rgb(4, 4, 4)!important;font-size: 16px!important;text-decoration: none!important; }
-  .content #main h2 a span,.content #main h2 a span em{color: rgb(4, 4, 4)!important;}
-  .content #main h2::before{
-    content: ""; 
-    padding-right: 10px;
-    border-left: 5px solid salmon; 
-  }  
-  #main img{max-width: 80%;}
-  .content #main p a{text-decoration: none;background-color: coral;padding: 5px;color: #fff;border-radius: 5px;}
-  .content #main p a:hover{box-shadow:  3px -1px 2px 0px rgba(150,0,0,0.5)  ;}
-  .content #main h3 a{font-size: 14px!important;}
-  /* 统一字体颜色标签 */
-  pred{color: red!important;}
-  pyellow{color: yellow;}
-  :root{	/*颜色*/
---dark:#5d677c;--dark-hover:#384253;--tpl:#768fe7;--tpl-hover:#677ecf;--default:#8783e1;--default-hover:#7773d7;--red:#f1716c;--red-hover:#d15451;--orange:#f57e00;--orange-hover:#cf6c03;--yellow:#fac413;--yellow-hover:#e9b712;--green:#26bc5c;--green-hover:#179b47;--cyan:#8cd03d;--cyan-hover:#7dc22d;--blue:#768fe7;--blue-hover:#677ecf;--purple:#9e83e1;--purple-hover:#896eca;--white:#ffffff;--white-hover:#f5f5f5;--gray:#b2b2b2;--gray-hover:#989898;--black:#4a4a4a;--black-hover:#000000;	/* 圆角 */--radius:2px;}
-
-/*颜色*/
-.red{color:var(--red)!important;}
-.orange{color:var(--orange)!important;}
-.yellow{color:var(--yellow)!important;}
-.green{color:var(--green)!important;}
-.cyan{color:var(--cyan)!important;}
-.blue{color:var(--blue)!important;}
-.purple{color:var(--purple)!important;}
-.white{color:var(--white)!important;}
-.gray{color:var(--gray)!important;}
-.black{color:var(--black)!important;}
-
-/* 背景色 */
-.bg-red{background-color:var(--red)!important;}
-.bg-red:not(.no-hover):hover{background-color:var(--red-hover)!important;}
-.bg-orange{background-color:var(--orange)!important;}
-.bg-orange:not(.no-hover):hover{background-color:var(--orange-hover)!important;}
-.bg-yellow{background-color:var(--yellow)!important;}
-.bg-yellow:not(.no-hover):hover{background-color:var(--yellow-hover)!important;}
-.bg-green{background-color:var(--green)!important;}
-.bg-green:not(.no-hover):hover{background-color:var(--green-hover)!important;}
-.bg-cyan{background-color:var(--cyan)!important;}
-.bg-cyan:not(.no-hover):hover{background-color:var(--cyan-hover)!important;}
-.bg-blue{background-color:var(--blue)!important;}
-.bg-blue:not(.no-hover):hover{background-color:var(--blue-hover)!important;}
-.bg-purple{background-color:var(--purple)!important;}
-.bg-purple:not(.no-hover):hover{background-color:var(--purple-hover)!important;}
-.bg-white{background-color:var(--white)!important;}
-.bg-white:not(.no-hover):hover{background-color:var(--white-hover)!important;}
-.bg-gray{background-color:var(--gray)!important;}
-.bg-gray:not(.no-hover):hover{background-color:var(--gray-hover)!important;}
-.bg-black{background-color:var(--black)!important;}
-.bg-black:not(.no-hover):hover{background-color:var(--black-hover)!important;}
-
  
-/*文字颜色*/
-color-R{color:#FF5722;}
-color-O{color:#FF9800;}
-color-Y{color:#FFC107;}
-color-G{color:#009688;}
-color-C{color:#8BC34A;}
-color-B{color:#2196F3;}
-color-P{color:#9C27B0;}
-
-/*标签-淡色*/
-tag{padding:0 5px;display:inline-block;margin:2px 0;color:#ffffff;background: #373e4e;border-radius: 2px;border: 1px solid #373e4e;font-size: 14px;}
-tag-LR{color:#4A4A4A;background:#fff7f6;border:1px solid #ffcdca;}
-tag-LO{color:#4A4A4A;background:#fff5e6;border:1px solid #ffd69a;}
-tag-LY{color:#4A4A4A;background:#fffdf1;border:1px solid #e8e4b3;}
-tag-LG{color:#4A4A4A;background:#f3fdf4;border:1px solid #b8dcb9;}
-tag-LC{color:#4A4A4A;background:#f9fdf3;border:1px solid #cbdcb8;}
-tag-LB{color:#4A4A4A;background:#eef9ff;border:1px solid #a4c8da;}
-tag-LP{color:#4A4A4A;background:#fcf5ff;border:1px solid #dfc1e8;}
-tag-LD{color:#4A4A4A;background:#eff2fb;border:1px solid #b7bed1;}
-
-/*标签-深色*/
-tag-DR{color:#ffffff;background:#FF5722;border:1px solid #FF5722;}
-tag-DO{color:#ffffff;background:#FF9800;border:1px solid #FF9800;}
-tag-DY{color:#ffffff;background:#FFC107;border:1px solid #FFC107;}
-tag-DG{color:#ffffff;background:#009688;border:1px solid #009688;}
-tag-DC{color:#ffffff;background:#8BC34A;border:1px solid #8BC34A;}
-tag-DB{color:#ffffff;background:#2196F3;border:1px solid #2196F3;}
-tag-DP{color:#ffffff;background:#9C27B0;border:1px solid #9C27B0;}
-tag-DD{color:#ffffff;background: #373e4e;border: 1px solid #373e4e;}
-
-/*引用*/ 
-blockquote-R{width:100%!important;display:table;color:#4A4A4A;background:#fff7f6;border:1px solid #ffcdca;border-radius:3px;font-family:initial;margin-bottom:10px;padding:7px 10px;color:#4A4A4A;}
-blockquote-O{width:100%!important;display:table;color:#4A4A4A;background:#fff5e6;border:1px solid #ffd69a;border-radius:3px;font-family:initial;margin-bottom:10px;padding:7px 10px;color:#4A4A4A;}
-blockquote-Y{width:100%!important;display:table;color:#4A4A4A;background:#fffdf1;border:1px solid #e8e4b3;border-radius:3px;font-family:initial;margin-bottom:10px;padding:7px 10px;color:#4A4A4A;}
-blockquote-G{width:100%!important;display:table;color:#4A4A4A;background:#f3fdf4;border:1px solid #b8dcb9;border-radius:3px;font-family:initial;margin-bottom:10px;padding:7px 10px;color:#4A4A4A;}
-blockquote-C{width:100%!important;display:table;color:#4A4A4A;background:#f9fdf3;border:1px solid #cbdcb8;border-radius:3px;font-family:initial;margin-bottom:10px;padding:7px 10px;color:#4A4A4A;}
-blockquote-B{width:100%!important;display:table;color:#4A4A4A;background:#eef9ff;border:1px solid #a4c8da;border-radius:3px;font-family:initial;margin-bottom:10px;padding:7px 10px;color:#4A4A4A;}
-blockquote-P{width:100%!important;display:table;color:#4A4A4A;background:#fcf5ff;border:1px solid #dfc1e8;border-radius:3px;font-family:initial;margin-bottom:10px;padding:7px 10px;color:#4A4A4A;}
-
- 
-</style>
 <body>
   <div id="app"></div>
   <script>
@@ -117,7 +19,7 @@ blockquote-P{width:100%!important;display:table;color:#4A4A4A;background:#fcf5ff
       name: '',
       // 侧边栏左侧的logo
       logo: '学习笔记',
-      repo: 'https://github.com/yaoGrace/notes/',
+      repo: '',  //https://github.com/yaoGrace/notes/
       // 加载自定义导航栏,需要目录下有_navbar.md文件
       loadNavbar: true,
       // 加载自定义侧边栏，需要目录下有_sidebar.md文件
@@ -147,14 +49,7 @@ blockquote-P{width:100%!important;display:table;color:#4A4A4A;background:#fcf5ff
         // 搜索标题的最大层级, 1 - 6
         depth: 4,
         hideOtherSidebarContent: false, // 是否隐藏其他侧边栏内容
-      },
-      // 字数插件配置
-      // count: {
-      //   countable: true,
-      //   fontsize: '0.9em',
-      //   color: 'rgb(90,90,90)',
-      //   language: 'chinese'
-      // }/*  */
+      }, 
       // 字数插件
       count:{
           countable: true,
@@ -207,8 +102,8 @@ blockquote-P{width:100%!important;display:table;color:#4A4A4A;background:#fcf5ff
     }
   </script>
   <!-- Docsify v4 -->
-  <!-- <script src="//cdn.jsdelivr.net/npm/docsify@4"></script> -->
-  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- <script src="//unpkg.com/docsify/lib/docsify.min.js"></script> -->
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
    <!-- 字数统计 --> 
   <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
