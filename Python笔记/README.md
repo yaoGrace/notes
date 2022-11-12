@@ -10,7 +10,7 @@
 
 ## 爬虫课程
 
-[b站在线观看](https://b23.tv/91lcOKf)
+[PYTHON爬虫从入门到逆向，基础—JS逆向—APP逆向—大神 b站在线观看](https://www.bilibili.com/video/BV1C8411e7dX/)
 
 ## 云端IDE 轻量且功能强大的集成开发工具  - 免费用户有500M空间存储
 
