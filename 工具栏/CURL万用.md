@@ -91,3 +91,88 @@ $data = array(
 # 第三步: 通过POST方式提交
 $result = $curl->post($apiUrl,$data); 
 ```
+
+## curl源码
+```php
+<?php
+/********************************************************
+ * 万能curl通信类 
+ * @version    
+ *******************************************************/
+namespace phpGrace\tools;
+class curl {
+    public $httpStatus;             #curl 状态
+    public $curlHndle;              #获取 curl 资源对象
+    public $speed;                  #传输时间毫秒
+    public $timeOut = 60;           #超时时间
+    public $set_Cookie;             #设置cookie
+    public $set_Refer;              #模拟访问来源Refer
+    public $set_UA;                 #模拟UseaAgent
+    public $get_LoadUrl = false;    #是否获取301跳转地址，默认不获取
+    public $get_Header = false;     #是否查看返回Header信息
+    public $set_Header;             #设置请求头
+
+    public function __construct(){
+        $this->curlHandle = curl_init();
+        curl_setopt($this->curlHandle, CURLOPT_TIMEOUT, $this->timeOut);
+    }
+
+    public function setopt($key, $val){
+        curl_setopt($this->curlHandle, $key , $val);
+    }
+
+    public function get($url){
+        curl_setopt($this->curlHandle, CURLOPT_URL            , $url);
+        curl_setopt($this->curlHandle, CURLOPT_RETURNTRANSFER , true);
+        curl_setopt($this->curlHandle, CURLOPT_SSL_VERIFYPEER , false);
+        curl_setopt($this->curlHandle, CURLOPT_SSL_VERIFYHOST , false);
+        curl_setopt($this->curlHandle, CURLOPT_ENCODING       , 'gzip,deflate');
+        curl_setopt($this->curlHandle, CURLOPT_TIMEOUT        , $this->timeOut);
+        # 设置cookie
+        if (isset($this->set_Cookie)) {
+            curl_setopt($this->curlHandle, CURLOPT_COOKIE, $this->set_Cookie);
+        }    
+        # 设置模拟访问来源Refer
+        if (isset($this->set_Refer)) {
+            curl_setopt($this->curlHandle, CURLOPT_REFERER, $this->set_Refer);
+        }
+        # 设置模拟UA 浏览器
+        if(isset($this->set_UA)){
+            // 手动设置UA
+            curl_setopt($this->curlHandle, CURLOPT_USERAGENT, $this->set_UA);
+        }else{
+            //默认UA
+            curl_setopt($this->curlHandle,CURLOPT_USERAGENT,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36");
+        }
+        # 是否查看返回Header信息
+        if ($this->get_Header) {
+            curl_setopt($this->curlHandle, CURLOPT_HEADER, true);
+        }
+        # 设置请求头
+        if(isset($this->set_Header)){
+            curl_setopt($this->curlHandle, CURLOPT_HTTPHEADER, $this->set_Header);
+        }
+
+        $result =  curl_exec($this->curlHandle);
+        $this->http_status = curl_getinfo($this->curlHandle);
+        # 是否获取301跳转地址
+        if ($this->get_LoadUrl) {
+            if (isset($Headers['redirect_url'])) {
+                $result = $Headers['redirect_url'];
+            }
+        }
+        $this->speed = round($this->httpStatus['pretransfer_time']*1000, 2);
+        return $result;
+    }
+
+    public function post($url, $data=null){
+        //如果参数为数组，自动拼接生成URL参数字符串
+        if (is_array($data)) {
+            $data = http_build_query($data);
+        }
+        curl_setopt($this->curlHandle, CURLOPT_POST, 1);
+        curl_setopt($this->curlHandle, CURLOPT_POSTFIELDS, $data);
+        return $this->get($url);
+    }
+}
+```
